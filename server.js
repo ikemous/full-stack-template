@@ -1,7 +1,7 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 
-const server = expres();
+const server = express();
 const PORT = process.env.PORT || 8080;
 
 // Sets up the Express app to handle data parsing
@@ -11,6 +11,8 @@ server.use(express.json());
 // Set Handlebars.
 server.engine("handlebars", exphbs({ defaultLayout: "main" }));
 server.set("view engine", "handlebars");
+
+server.use(require("./routes/html-routes.js"));
 
 server.listen(PORT, () => {
     console.log(
