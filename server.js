@@ -17,7 +17,7 @@ server.set("view engine", "handlebars");
 server.use(express.static("public"));
 
 const dataBaseName = "newDatabase";
-mongoose.connect(`mongodb://localhost/${dataBaseName}`,{
+mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/${dataBaseName}`,{
     useNewUrlParser: true,
     useFindAndModify: false
 });

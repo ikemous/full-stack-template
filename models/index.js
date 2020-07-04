@@ -1,3 +1,3 @@
 module.exports = {
-    account: require("./newDataBase")
+    userAccount: require("./account")
 };
