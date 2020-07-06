@@ -1,9 +1,13 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const Schema = mongoose.Schema;
 
 const AccountSchema = new Schema(
     {
+        userName: {
+            type: String
+        },
         email: {
             type: String,
             unique: true,
@@ -43,10 +47,22 @@ AccountSchema.methods.setFullName = function() {
 };
 
 AccountSchema.methods.lastUpdatedDate = function() {
-    this.lastUpdatedDate = Date.now();
+    this.userUpdated = Date.now();
     return this.userUpdated;
 };
 
-const userAccount = mongoose.model("userAccount", AccountSchema);
+AccountSchema.methods.validPassword = function(password){
+    return bcrypt.compareSync(password, this.password);
+};
 
-module.exports = userAccount;
+AccountSchema.methods.beforeCreate = function(){
+    this.password = bcrypt.hashSync(
+        this.password,
+        bcrypt.genSaltSync(10),
+        null
+    );
+};
+
+const UserAccount = mongoose.model("UserAccount", AccountSchema);
+
+module.exports = UserAccount;
