@@ -30,7 +30,7 @@ router.post("/account/signup", ({body}, res) => {
 
     db.UserAccount.insertMany(newAccount)
     .then(() => {
-        res.redirect(307, "/");
+        res.redirect(307, "/nextPage");
     })
     .catch(err => {
         res.status(401).json(err);

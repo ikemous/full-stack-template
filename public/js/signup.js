@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    const $form = $("#form-login");
+    const $form = $("#form-signup");
     const $emailBox = $("#email-input");
     const $passwordBox = $("#password-input");
 
@@ -11,19 +11,19 @@ $(document).ready(function(){
         }
         if(!data.email || !data.password) return;
 
-        login(data);
+        signup(data);
         $emailBox.val("");
         $passwordBox.val("");
     });
 
-    function login(loginInfo){
-        $.post("/account/login", loginInfo)
+    function signup(userInfo){
+        $.post("/account/signup", userInfo)
         .then(() => {
-            console.log("made it");
+            window.location.replace("/nextPage");
         })
         .catch(err => {
             console.log(err);
         });
     };
-
+    
 });
