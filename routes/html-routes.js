@@ -6,12 +6,7 @@ const passport = require("passport");
 
 
 router.get("/", (req, res) => {
-    console.log(req.user);
-    if(req.user)
-    {
-        res.redirect("nextPage");
-    }
-    res.redirect("/login");
+    res.render("index");
 });
 
 router.get("/login", (req, res) => {
@@ -30,7 +25,7 @@ router.post("/account/signup", ({body}, res) => {
 
     db.UserAccount.insertMany(newAccount)
     .then(() => {
-        res.redirect(307, "/nextPage");
+        res.redirect(307, "/account/login");
     })
     .catch(err => {
         res.status(401).json(err);

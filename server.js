@@ -18,6 +18,7 @@ server.set("view engine", "handlebars");
 
 // Static directory
 server.use(express.static("public"));
+server.use(express.static("./node_modules/bootstrap/dist/js/"));
 
 const dataBaseName = process.env.MONGODB_URI || "UserAccount";
 mongoose.connect(`mongodb://localhost/${dataBaseName}`,{
