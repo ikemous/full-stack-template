@@ -2,11 +2,14 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
 const session = require("express-session");
+const compression = require("compression");
 const passport = require("./config/passport");
 
 //Create server setup
 const server = express();
 const PORT = process.env.PORT || 8080;
+
+server.use(compression());
 
 // Sets up the Express app to handle data parsing
 server.use(express.urlencoded({ extended: true }));
