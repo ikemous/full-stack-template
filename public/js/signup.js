@@ -19,7 +19,7 @@ $(document).ready(function(){
     function signup(userInfo){
         $.post("/account/signup", userInfo)
         .then(() => {
-            window.location.replace("/nextPage");
+            window.location.replace("/account");
         })
         .catch(err => {
             console.log(err);
