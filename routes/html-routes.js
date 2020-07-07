@@ -36,7 +36,7 @@ router.post("/account/login", passport.authenticate("local"), (req, res) => {
     res.json(req.user);
 });
 
-router.get("/account", isAuthenticated, (req, res) => {
-    res.render("accountPage");
+router.get("/profile", isAuthenticated, (req, res) => {
+    res.render("profile");
 });
 module.exports = router;

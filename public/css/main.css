@@ -6,7 +6,7 @@ html, body, .d-flex.text-center.bg-secondary {
   height: 100%;
 }
 
-.form-login, .form-signup {
+.form-login, .form-signup, .templateText {
   width: 100%;
   max-width: 330px;
   padding: 15px;
