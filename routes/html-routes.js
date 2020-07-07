@@ -23,7 +23,7 @@ router.post("/account/signup", ({body}, res) => {
     newAccount.lastUpdatedDate();
     console.log(newAccount);
 
-    db.UserAccount.insertMany(newAccount)
+    db.UserAccount.create(newAccount)
     .then(() => {
         res.redirect(307, "/account/login");
     })
