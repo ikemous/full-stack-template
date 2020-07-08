@@ -1,18 +1,30 @@
+/*
+Navbar Styles
+*/
 .navbar {
   padding: 0.5rem 1rem;
 }
 
+/*
+End Navbar Styles
+*/
+/*
+Start Styles
+*/
 html, body, .d-flex.text-center.bg-secondary {
   height: 100%;
 }
 
-.form-login, .form-signup, .templateText {
+.form-login, .form-signup {
   width: 100%;
   max-width: 330px;
   padding: 15px;
   margin: auto;
 }
 
+/*
+End Styles
+*/
 /*!
  * Bootstrap v5.0.0-alpha1 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
