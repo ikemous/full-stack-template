@@ -4,6 +4,7 @@ const passport = require("passport");
 //import authentication middleware
 const isAuthenticated = require("../config/middleware/isAuthenticated.js");
 //import databases
+
 const db = require("../models");
 
 
@@ -13,7 +14,7 @@ const db = require("../models");
  */
 router.post("/account/signup", ({body}, res) => {
     //create new user
-    const newAccount = new UserAccount(body);
+    const newAccount = new db.UserAccount(body);
     //hash password
     newAccount.beforeCreate();
     //update updated date
