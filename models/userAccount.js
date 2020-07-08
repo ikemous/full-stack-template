@@ -6,7 +6,8 @@ const Schema = mongoose.Schema;
 const AccountSchema = new Schema(
     {
         userName: {
-            type: String
+            type: String,
+            trim: true
         },
         email: {
             type: String,
@@ -53,6 +54,18 @@ AccountSchema.methods.lastUpdatedDate = function() {
 
 AccountSchema.methods.validPassword = function(password){
     return bcrypt.compareSync(password, this.password);
+};
+
+AccountSchema.methods.profileInfo = function(){
+    const profile = {
+        userName: this.userName,
+        email: this.email,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        fullName: this.fullName,
+        updated: this.userUpdated
+    }
+    return profile;
 };
 
 AccountSchema.methods.beforeCreate = function(){

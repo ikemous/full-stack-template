@@ -1,7 +1,9 @@
 {{> navbar profilePage=true}}
 <div class="d-flex text-center bg-secondary">
     <div class="templateText">
-        <h1>Welcome User!</h1>
-        <p>Thanks For Joining Us Today!</p>
+        {{#with profile}}
+            <h1>Welcome {{email}}!</h1>
+            <p>Thanks For Joining Us Today!</p>
+        {{/with}}
     </div>
 </div>

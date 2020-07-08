@@ -37,6 +37,14 @@ router.post("/account/login", passport.authenticate("local"), (req, res) => {
 });
 
 router.get("/profile", isAuthenticated, (req, res) => {
-    res.render("profile");
+    db.UserAccount.findById({_id: req.user[0].id})
+    .then(async user => {
+        const profileInfo = await user.profileInfo()
+        await res.render("profile", {profile: profileInfo});
+    })
+    .catch(err => {
+        res.json(err);
+    });
 });
+
 module.exports = router;
