@@ -1,6 +1,12 @@
+/*
+Use This page To create the main.css
+*/
+
 //Import Variables
 @import "variables";
-
+//Import navbar styling
 @import "navBar";
+//Import stylesheet changes
 @import "style";
+//Import boostrap css
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
