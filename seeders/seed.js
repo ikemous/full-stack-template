@@ -22,8 +22,6 @@ const users = userAccountSeed.map(account => {
     return newAccount;
 });
 
-console.log(users);
-
 db.Accounts.deleteMany({})
 .then(() => db.Accounts.insertMany(users))
 .then(data => {
