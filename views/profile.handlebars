@@ -1,10 +1,21 @@
 {{> navbar profilePage=true}}
-<div class="d-flex text-center">
-    <div class="templateText">
-        {{#with profile}}
-            <h1>Welcome {{email}}!</h1>
-            <p>Feel Free This Page Using The User Login Information</p>
-            <p>You Can Add A Form To Allow The User To Update The Information</p>
-        {{/with}}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4">
+            {{#with profile}}
+                <picture>
+                    <img alt="Insert Image Here"/>
+                </picture>
+                <h1 class="text-center">{{username}}</h1>
+                <p>Created: {{createdDate}}</p>
+                <p>Updated: {{updatedDate}}</p>
+            {{/with}}
+        </div>
+
+        <div class="col-sm-8">
+            {{#with profile}}
+                <p>Name: {{fullname}}</p>
+            {{/with}}
+        </div>
     </div>
 </div>

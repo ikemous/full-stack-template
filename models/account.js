@@ -1,6 +1,7 @@
 //Import depencencies
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const moment = require("moment");
 //Create Schema from mongoose
 const Schema = mongoose.Schema;
 
@@ -11,7 +12,7 @@ const AccountSchema = new Schema(
         username: {
             type: String,
             trim: true,
-            default: this.fullname
+            default: this.email
         },
         email: {
             type: String,
@@ -100,7 +101,8 @@ AccountSchema.methods.profileInfo = function(){
         firstname: this.firstname,
         lastname: this.lastname,
         fullname: this.fullname,
-        updated: this.updatedDate
+        updatedDate: moment(this.updatedDate).format('LL'),
+        createdDate: moment(this.createdDate).format('LL')
     }
     //return profile information
     return profile;

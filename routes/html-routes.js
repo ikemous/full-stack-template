@@ -16,7 +16,11 @@ router.get("/", (req, res) => {
  * Purpose: To render login page
  */
 router.get("/login", (req, res) => {
-    if(req.user) res.redirect("/profile");
+    if(req.user)
+    {
+        res.redirect("/profile");
+        return;
+    }
     //render login handlebars page
     res.render("login");
 });
@@ -26,7 +30,11 @@ router.get("/login", (req, res) => {
  * Purpose: Render signup page
  */
 router.get("/signup", (req, res) => {
-    if(req.user) res.redirect("/profile");
+    if(req.user)
+    {
+        res.redirect("/profile");
+        return;
+    }
     //render signup handlebars page
     res.render("signup");
 });//End /signup
