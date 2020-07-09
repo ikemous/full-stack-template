@@ -2,8 +2,20 @@
 Navbar Styles
 */
 .navbar{
-    padding: map-get($padding, navPadding)  
+    padding: map-get($padding, navPadding);
+    background: map-get($color, secondaryBackground);
 }
+.dropdown-menu{
+    padding: map-get($padding, none)!important;
+    background: map-get($color, secondaryBackground)!important;
+}
+
+@media only screen and (max-width: 990px) {
+    .dropdown-menu{
+        margin-left: 30px!important;
+        border: none!important;
+    }
+  }
 /*
 End Navbar Styles
 */

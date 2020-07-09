@@ -1,8 +1,11 @@
 /*
 Start Styles
 */
-html, body, .d-flex.text-center.bg-secondary {
+html, body{
     height: 100%;
+    min-width: 360px;
+    background: map-get($color, mainBackground)!important;
+    color: $font-color!important;
 }
 
 .form-login, .form-signup, .templateText{

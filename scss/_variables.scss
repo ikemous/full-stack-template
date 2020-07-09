@@ -1,5 +1,12 @@
-$secondary: #f4f4f4;
+$font-color: black;
 
 $padding: (
+    "none": 0,
     "navPadding": (.5rem 1rem)
+);
+
+$color: (
+    "mainBackground": #f4f4f4,
+    "secondaryBackground": #A5C9FF,
+    "supportBackground": #A5FFC9
 );
