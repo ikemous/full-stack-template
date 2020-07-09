@@ -18,7 +18,11 @@ $(document).ready(function(){
             password: $passwordBox.val().trim()
         }
         //Check if data is empty
-        if(!data.email || !data.password) return;
+        if(!data.email || !data.password) 
+        {
+            handleError();
+            return;
+        }
         //login user
         login(data);
         //Clear Boxes
@@ -41,8 +45,20 @@ $(document).ready(function(){
         })
         .catch(err => {
             //Show err
-            console.log(err);
+            handleError(err);
         });
     };//End login()
+
+    function handleError(err = null)
+    {
+        if(err != null)
+        {
+            $(".msg").text("Incorrect Email or Password");
+            $("#alert").attr("style", "");
+            return;
+        } 
+        $(".msg").text("Missing Email or Password");
+        $("#alert").attr("style", "");
+    }
 
 });//End window load
