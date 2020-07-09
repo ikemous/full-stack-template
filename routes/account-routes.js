@@ -14,13 +14,11 @@ const db = require("../models");
  */
 router.post("/account/signup", ({body}, res) => {
     //create new user
-    const newAccount = new db.UserAccount(body);
-    //hash password
+    const newAccount = new db.Accounts(body);
+    //create account information
     newAccount.beforeCreate();
-    //update updated date
-    newAccount.lastUpdatedDate();
     //Create user account
-    db.UserAccount.create(newAccount)
+    db.Accounts.create(newAccount)
     .then(() => {
         //redirect to profile page
         res.redirect(307, "/account/login");
@@ -46,7 +44,7 @@ router.post("/account/login", passport.authenticate("local"), (req, res) => {
  */
 router.get("/profile", isAuthenticated, (req, res) => {
     //use user information to find database information
-    db.UserAccount.findById({_id: req.user[0].id})
+    db.Accounts.findById({_id: req.user[0].id})
     .then(async user => {
         //grab user profile information
         const profileInfo = await user.profileInfo();

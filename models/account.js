@@ -8,9 +8,10 @@ const Schema = mongoose.Schema;
 const AccountSchema = new Schema(
     //Chema Rows
     {
-        userName: {
+        username: {
             type: String,
-            trim: true
+            trim: true,
+            default: this.fullname
         },
         email: {
             type: String,
@@ -23,19 +24,22 @@ const AccountSchema = new Schema(
             required: "Password is Required",
             validate: [({ length }) => length >= 6, "Password should be longer."]
         },
-        firstName: {
+        firstname: {
             type: String,
             trim: true
         },
-        lastName: {
+        lastname: {
             type: String,
             trim: true
         },
-        userCreated: {
-          type: Date,
-          default: Date.now
+        createdDate: {
+            type: Date,
+            default: Date.now
         },
-        userUpdated: Date,
+        updatedDate: {
+            type: Date,
+            default: Date.now
+        },
         fullName: String
     },
     {
@@ -53,9 +57,9 @@ const AccountSchema = new Schema(
  */
 AccountSchema.methods.setFullName = function() {
     //Update full name
-    this.fullName = `${this.firstName} ${this.lastName}`;
+    this.fullname = `${this.firstname} ${this.lastname}`;
     //return full name
-    return this.fullName;
+    return this.fullname;
 };//End setFullName()
 
 /**
@@ -66,9 +70,9 @@ AccountSchema.methods.setFullName = function() {
  */
 AccountSchema.methods.lastUpdatedDate = function() {
     //updated updatedDate
-    this.userUpdated = Date.now();
+    this.updatedDate = Date.now();
     //return updated date
-    return this.userUpdated;
+    return this.updatedDate;
 };//End lastUpdatedDate
 
 /**
@@ -91,12 +95,12 @@ AccountSchema.methods.validPassword = function(password){
 AccountSchema.methods.profileInfo = function(){
     //create profile object
     const profile = {
-        userName: this.userName,
+        username: this.username,
         email: this.email,
-        firstName: this.firstName,
-        lastName: this.lastName,
-        fullName: this.fullName,
-        updated: this.userUpdated
+        firstname: this.firstname,
+        lastname: this.lastname,
+        fullname: this.fullname,
+        updated: this.updatedDate
     }
     //return profile information
     return profile;
@@ -115,6 +119,7 @@ AccountSchema.methods.beforeCreate = function(){
         bcrypt.genSaltSync(10),
         null
     );
+    this.setFullName();
 };//end beforeCreate()
 
 //Finish UserAccountModel

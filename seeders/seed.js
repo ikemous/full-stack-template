@@ -1,27 +1,33 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-mongoose.connect("mongodb://localhost/useraccount", {
+mongoose.connect("mongodb://localhost/accounts", {
     useNewUrlParser: true,
     useFindAndModify: false
 });
 
 const userAccountSeed = [
     {
-        userName: "Ikemous",
+        username: "Ikemous",
         email: "ikemous@ikemous.com",
         password: "secret",
-        firstName: "ike",
-        lastName: "ikelast",
-        userUpdated: Date.now(),
-        fullName: "ike ikelast"
+        firstname: "ike",
+        lastname: "ikelast"
     }
 ];
 
-db.UserAccount.deleteMany({})
-.then(() => db.UserAccount.insertMany(userAccountSeed))
+const users = userAccountSeed.map(account => {
+    const newAccount = new db.Accounts(account);
+    newAccount.beforeCreate();
+    return newAccount;
+});
+
+console.log(users);
+
+db.Accounts.deleteMany({})
+.then(() => db.Accounts.insertMany(users))
 .then(data => {
-    console.log(data.result.n + " records inserted!");
+    console.log(" records inserted!");
     process.exit(0);
 })
 .catch(err => {

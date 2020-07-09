@@ -51,7 +51,6 @@ $(document).ready(function(){
 
     function handleError(err = null)
     {
-        console.log(err);
         if(!err)
         {
             $(".msg").text("Incorrect Email or Password");

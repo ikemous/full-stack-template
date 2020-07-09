@@ -1,4 +1,4 @@
 //Export databases
 module.exports = {
-    UserAccount: require("./userAccount")
+    Accounts: require("./account")
 };

@@ -13,7 +13,7 @@ passport.use(
         //Check login information
         (email, password, done) => {
             //Query email from database
-            db.UserAccount.find({email: email})
+            db.Accounts.find({email: email})
             .then(user => {
                 //Check for user
                 if(!user)

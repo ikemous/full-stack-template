@@ -27,7 +27,7 @@ server.use(express.static("public"));
 server.use(express.static("./node_modules/bootstrap/dist/js/"));
 
 //Connect to Mongodb server
-const dataBaseName = process.env.MONGODB_URI || "UserAccount";
+const dataBaseName = process.env.MONGODB_URI || "accounts";
 mongoose.connect(`mongodb://localhost/${dataBaseName}`,{
     useNewUrlParser: true,
     useFindAndModify: false
