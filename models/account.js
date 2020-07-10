@@ -41,7 +41,10 @@ const AccountSchema = new Schema(
             type: Date,
             default: Date.now
         },
-        fullName: String
+        fullName: {
+            type: String,
+            default: `${this.firstname} ${this.lastname}`
+        }
     },
     {
         toJSON: {
@@ -121,7 +124,6 @@ AccountSchema.methods.beforeCreate = function(){
         bcrypt.genSaltSync(10),
         null
     );
-    this.setFullName();
 };//end beforeCreate()
 
 //Finish UserAccountModel
